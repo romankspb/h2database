@@ -7,7 +7,7 @@ ENV H2_DIST https://h2database.com/h2-2019-10-14.zip
 RUN mkdir -p /opt/h2/bin /opt/h2/data \
     && curl ${H2_DIST} -o /tmp/h2.zip \
     && unzip /tmp/h2.zip -d /tmp/ \
-    && cp /tmp/h2/bin/*.jar /opt/h2 \
+    && cp /tmp/h2/bin/*.jar /opt/h2/bin/ \
     && rm -rf /tmp/h2*
 
 COPY h2.server.properties /opt/h2/.h2.server.properties
