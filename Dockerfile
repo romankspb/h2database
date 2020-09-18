@@ -10,7 +10,7 @@ RUN mkdir -p /opt/h2/bin /opt/h2/data \
     && cp /tmp/h2/bin/*.jar /opt/h2/bin/ \
     && rm -rf /tmp/h2*
 
-COPY h2.server.properties /opt/h2/.h2.server.properties
+COPY h2.server.properties /opt/h2/etc/.h2.server.properties
 
 EXPOSE 8080 1521 5435
 
@@ -20,6 +20,6 @@ CMD java -cp /opt/h2/bin/h2*.jar org.h2.tools.Server \
     -web -webAllowOthers -webPort 8080 \
     -tcp -tcpAllowOthers -tcpPort 1521 \
     -pg -pgAllowOthers -pgPort 5435 \
-    -properties /opt/h2 \
+    -properties /opt/h2/etc \
     -baseDir /opt/h2/data \
     -ifNotExists ${H2_OPTIONS}
